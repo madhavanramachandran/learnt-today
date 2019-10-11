@@ -22,3 +22,10 @@ echo export "JAVA_HOME=\$(/usr/libexec/java_home)" >> ~/.bash_profile
   > `sudo keytool -import -trustcacerts -file ~/Downloads/DigiCertSHA2ExtendedValidationServerCA.crt -keystore cacerts`
 
 - Now we could able to hit the endpoint from my spring boot application without this excpetion.
+
+Update#1:
+- The problem still continues as we are not sure as adding new cert to keystore is worth doing it. We thought we should dig deeper.
+- We figured out that the third party endpoint is having certificate chain. The root certificate is provided by Digicert is present by default in jre certificates. But the next certificate [`DigiCert High Assurance EV Root CA`]in the chain is not present.
+  > https://www.digicert.com/extended-validation-ssl.htm
+- Now we have no other option other than adding this new certificate to our production environment for the java client to pickup.
+- In Progress..
