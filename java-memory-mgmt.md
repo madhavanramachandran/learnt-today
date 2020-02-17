@@ -117,3 +117,9 @@ and `equals` is used to check if two objects are same value.
 
 
 ## Tuning JVM.
+- `xmx` - max heap size.
+- `Xms` - starting heap size
+    > `-Xmx512m -Xms150m`
+
+- `-verbose:gc` print to console when GC is happening.
+- `-XX:HeapDumpOnOutOfMemory` - create a heat dump file when out of memory exception occurs.
